@@ -12,4 +12,8 @@
     <string name="menu_pedidos">Mis Pedidos</string>
     <string name="menu_ingresos">Total de Ingresos</string>
     <string name="title_activity_main">WaiterMobile</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_mesa_main">Mesa</string>
 </resources>

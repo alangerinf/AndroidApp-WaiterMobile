@@ -7,6 +7,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.os.Handler;
 import android.util.Pair;
 import android.view.LayoutInflater;
@@ -14,12 +18,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.airbnb.lottie.LottieAnimationView;
 import com.alanger.waitermobile.adapters.RViewAdapterMesa;
+import com.alanger.waitermobile.adapters.RViewAdapterPedido;
 import com.alanger.waitermobile.model.Mesa;
+import com.alanger.waitermobile.model.Pedido;
 import com.alanger.waitermobile.model.SharedPreferencesManager;
 import com.alanger.waitermobile.model.User;
 
@@ -27,37 +29,53 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ListMesasFragment extends Fragment {
-
-
-    private OnFragmentInteractionListener mListener;
+/**
+ * A simple {@link Fragment} subclass.
+ * Activities that contain this fragment must implement the
+ * {@link PedidosListosFragment.OnFragmentInteractionListener} interface
+ * to handle interaction events.
+ * Use the {@link PedidosListosFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class PedidosListosFragment extends Fragment {
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+
     ProgressDialog progressDialog;
-    private  static List<Mesa> mesaList;
+    static Activity activity;
+    private static int REQUESTCODE_EDITPALLET=1001;
+    private  static List<Pedido> pedidoList;
 
     Context ctx;
-    private static RViewAdapterMesa adapter;
+    private static RViewAdapterPedido adapter;
 
     private static RecyclerView rViewPallets;
 
-    private static int REQUESTCODE_EDITPALLET=1001;
 
+    private OnFragmentInteractionListener mListener;
 
-    String TAG = ListMesasFragment.class.getSimpleName();
-
-    static Activity activity;
-
-    public ListMesasFragment(Activity mainActivity) {
-        this.activity=mainActivity;
+    public PedidosListosFragment() {
+        // Required empty public constructor
     }
 
-
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param param1 Parameter 1.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment PedidosListosFragment.
+     */
     // TODO: Rename and change types and number of parameters
-    public static ListMesasFragment newInstance(String param1, String param2) {
-        ListMesasFragment fragment = new ListMesasFragment(activity);
+    public static PedidosListosFragment newInstance(String param1, String param2) {
+        PedidosListosFragment fragment = new PedidosListosFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -65,28 +83,23 @@ public class ListMesasFragment extends Fragment {
         return fragment;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
 
+    private void addMesas() {
+
+        for(int i=0;i<10;i++){
+            Pedido mesaTemp = new Pedido(i+1,i+1);
+            pedidoList.add(mesaTemp);
         }
 
+        adapter = new RViewAdapterPedido(pedidoList);
+
+
+        rViewPallets.setAdapter(adapter);
     }
+    private void events() {
 
-    @Override
-    public void onStart() {
-        super.onStart();
 
-        define();
-        addMesas();
-        events();
-        startAnimation();
-        User user = SharedPreferencesManager.getUser(ctx);
-        //progressDialog.show();
-       // consultarSensores(user.getToken());
+
     }
 
     private void startAnimation() {
@@ -100,69 +113,41 @@ public class ListMesasFragment extends Fragment {
                 }
         );
     }
-    Handler handler = new Handler();
-    private void events() {
 
+    @Override
+    public void onStart() {
+        super.onStart();
 
-
+        define();
+        addMesas();
+        events();
+        startAnimation();
+        User user = SharedPreferencesManager.getUser(ctx);
+        //progressDialog.show();
+        // consultarSensores(user.getToken());
     }
-
-
-    private void addMesas() {
-
-        for(int i=0;i<10;i++){
-            Mesa mesaTemp = new Mesa(i+1,i+1);
-            mesaList.add(mesaTemp);
-        }
-
-        adapter = new RViewAdapterMesa(mesaList);
-        adapter.setOnClicListener(v -> {
-            /*
-            obtenerSensoresRestantes();
-            */
-            int pos = rViewPallets.getChildAdapterPosition(v);
-            Mesa item = mesaList.get(pos);
-            Intent i = new Intent(getContext(), MesaActivity.class);
-            View viewTemp = v;
-
-            ActivityOptions options = (ActivityOptions) ActivityOptions.makeSceneTransitionAnimation
-                    (activity,
-                            Pair.create(viewTemp, viewTemp.getTransitionName())
-                    );
-            Bundle bundleExtra = new Bundle();
-            bundleExtra.putSerializable(MesaActivity.PARAM_MESA,  item);
-            i.putExtras(bundleExtra);
-            startActivityForResult(i,REQUESTCODE_EDITPALLET, options.toBundle());
-            //handler.postDelayed(()->{
-            //    adapter.setModeVerify(false);
-            //    adapter.notifyDataSetChanged();
-            //},500);
-
-        });
-
-        rViewPallets.setAdapter(adapter);
-    }
-
-
-
     private void define() {
         ctx = getContext();
         progressDialog = new ProgressDialog(ctx);
 
+        rViewPallets = getView().findViewById(R.id.rViewPallets);
+        pedidoList = new ArrayList<>();
 
-        rViewPallets = getView().findViewById(R.id.mesa_rViewPallets);
-        mesaList = new ArrayList<>();
-
+    }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View RootView = inflater.inflate(R.layout.fragment_mesas, container, false);
-
-
-        return RootView;
+        return inflater.inflate(R.layout.fragment_pedidos_listos, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -200,8 +185,7 @@ public class ListMesasFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: ActivityUpdate argument type and name
+        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-
 }

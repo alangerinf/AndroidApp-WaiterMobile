@@ -4,7 +4,6 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import android.view.View;
 
@@ -26,10 +25,11 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener ,
+PedidosListosFragment.OnFragmentInteractionListener,
 ListMesasFragment.OnFragmentInteractionListener{
 
 
-    private Fragment myFragment = null;
+    private static Fragment myFragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,7 @@ ListMesasFragment.OnFragmentInteractionListener{
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        myFragment = new ListMesasFragment();
+        myFragment = new ListMesasFragment(this);
 
 
         getSupportFragmentManager().beginTransaction().replace(R.id.content_main, myFragment).commit();
@@ -47,8 +47,7 @@ ListMesasFragment.OnFragmentInteractionListener{
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                myFragment.onStart();
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -75,6 +74,13 @@ ListMesasFragment.OnFragmentInteractionListener{
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+
+    public void onClick(View view){
+        int id = view.getId();
+        if(id==R.id.fab){
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_main, myFragment).commit();
+        }
     }
 
     @Override
@@ -111,9 +117,16 @@ ListMesasFragment.OnFragmentInteractionListener{
         int id = item.getItemId();
 
         if (id == R.id.nav_mesas) {
-            // Handle the camera action
+
+            myFragment = new ListMesasFragment(this);
+
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_main, myFragment).commit();
         } else if (id == R.id.nav_pedidos) {
 
+            myFragment = new PedidosListosFragment();
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_main, myFragment).commit();
         } else if (id == R.id.nav_money) {
 
         }

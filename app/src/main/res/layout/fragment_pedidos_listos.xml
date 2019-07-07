@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ListMesasFragment">
+    tools:context=".PedidosListosFragment">
 
 <androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/mesa_capafondo"
+    android:id="@+id/capafondo"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/mesa_lottie"
+        android:id="@+id/lottie"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:alpha="0.5"
@@ -29,7 +29,7 @@
         tools:ignore="MissingConstraints" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/mesa_clIzquierda"
+        android:id="@+id/clIzquierda"
         android:layout_width="32dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -40,7 +40,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/mesa_clDerecha"
+        android:id="@+id/clDerecha"
         android:layout_width="32dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -50,41 +50,41 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/mesa_capaBlanca"
+        android:id="@+id/capaBlanca"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/mesa_clDerecha"
-        app:layout_constraintStart_toEndOf="@+id/mesa_clIzquierda"
+        app:layout_constraintEnd_toStartOf="@+id/clDerecha"
+        app:layout_constraintStart_toEndOf="@+id/clIzquierda"
         app:layout_constraintTop_toTopOf="parent">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/mesa_capafondoRV"
+        android:id="@+id/capafondoRV"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:alpha="0.8"
         android:background="@drawable/shape_bg_tunel"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/mesa_clDerecha"
-        app:layout_constraintStart_toEndOf="@+id/mesa_clIzquierda"
-        app:layout_constraintTop_toTopOf="@+id/mesa_headerbotton">
+        app:layout_constraintEnd_toStartOf="@+id/clDerecha"
+        app:layout_constraintStart_toEndOf="@+id/clIzquierda"
+        app:layout_constraintTop_toTopOf="@id/headerbotton">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/mesa_constraintLayout"
+        android:id="@+id/constraintLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/mesa_clDerecha"
-        app:layout_constraintStart_toEndOf="@+id/mesa_clIzquierda"
-        app:layout_constraintTop_toTopOf="@+id/mesa_headerbotton">
+        app:layout_constraintEnd_toStartOf="@+id/clDerecha"
+        app:layout_constraintStart_toEndOf="@+id/clIzquierda"
+        app:layout_constraintTop_toTopOf="@id/headerbotton">
 
         <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/mesa_lottieBgTunel"
+            android:id="@+id/lottieBgTunel"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:scaleType="centerCrop"
@@ -100,7 +100,7 @@
             app:lottie_scale="0.1"
             tools:ignore="MissingConstraints" />
         <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/mesa_lottieBgTune2"
+            android:id="@+id/lottieBgTune2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:scaleType="centerCrop"
@@ -108,7 +108,7 @@
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mesa_lottieBgTunel"
+            app:layout_constraintTop_toBottomOf="@+id/lottieBgTunel"
             app:lottie_autoPlay="true"
             app:lottie_fileName="bg_tunel.json"
             app:lottie_imageAssetsFolder="assets"
@@ -116,7 +116,7 @@
             app:lottie_scale="0.1"
             tools:ignore="MissingConstraints" />
         <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/mesa_lottieBgTune3"
+            android:id="@+id/lottieBgTune3"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:scaleType="centerCrop"
@@ -124,7 +124,7 @@
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mesa_lottieBgTune2"
+            app:layout_constraintTop_toBottomOf="@+id/lottieBgTune2"
             app:lottie_autoPlay="true"
             app:lottie_fileName="bg_tunel.json"
             app:lottie_imageAssetsFolder="assets"
@@ -132,7 +132,7 @@
             app:lottie_scale="0.1"
             tools:ignore="MissingConstraints" />
         <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/mesa_lottieBgTune4"
+            android:id="@+id/lottieBgTune4"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:scaleType="centerCrop"
@@ -140,7 +140,7 @@
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mesa_lottieBgTune3"
+            app:layout_constraintTop_toBottomOf="@+id/lottieBgTune3"
             app:lottie_autoPlay="true"
             app:lottie_fileName="bg_tunel.json"
             app:lottie_imageAssetsFolder="assets"
@@ -148,7 +148,7 @@
             app:lottie_scale="0.1"
             tools:ignore="MissingConstraints" />
         <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/mesa_lottieBgTune5"
+            android:id="@+id/lottieBgTune5"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:scaleType="centerCrop"
@@ -156,7 +156,7 @@
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mesa_lottieBgTune4"
+            app:layout_constraintTop_toBottomOf="@+id/lottieBgTune4"
             app:lottie_autoPlay="true"
             app:lottie_fileName="bg_tunel.json"
             app:lottie_imageAssetsFolder="assets"
@@ -164,7 +164,7 @@
             app:lottie_scale="0.1"
             tools:ignore="MissingConstraints" />
         <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/mesa_lottieBgTune6"
+            android:id="@+id/lottieBgTune6"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:scaleType="centerCrop"
@@ -172,7 +172,7 @@
             android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mesa_lottieBgTune5"
+            app:layout_constraintTop_toBottomOf="@+id/lottieBgTune5"
             app:lottie_autoPlay="true"
             app:lottie_fileName="bg_tunel.json"
             app:lottie_imageAssetsFolder="assets"
@@ -181,7 +181,7 @@
             tools:ignore="MissingConstraints" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/mesa_rViewPallets"
+            android:id="@+id/rViewPallets"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -192,37 +192,37 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:spanCount="2">
+            app:spanCount="1">
 
         </androidx.recyclerview.widget.RecyclerView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/mesa_topeDerecho"
+        android:id="@+id/topeDerecho"
         android:layout_width="12dp"
         android:layout_height="match_parent"
   android:background="@drawable/shape_shadow_line_vertical"
       app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/mesa_constraintLayout"
-        app:layout_constraintStart_toEndOf="@+id/mesa_constraintLayout"
+        app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
+        app:layout_constraintStart_toEndOf="@+id/constraintLayout"
         app:layout_constraintTop_toTopOf="parent">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/mesa_topeIzquierdo"
+        android:id="@+id/topeIzquierdo"
         android:layout_width="12dp"
         android:layout_height="match_parent"
         android:background="@drawable/shape_shadow_line_vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/mesa_constraintLayout"
-        app:layout_constraintStart_toStartOf="@+id/mesa_constraintLayout"
+        app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout"
         app:layout_constraintTop_toTopOf="parent">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/mesa_headerbotton"
+        android:id="@+id/headerbotton"
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:background="@drawable/shape_header"
@@ -233,13 +233,13 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/mesa_gear"
+        android:id="@+id/gear"
         android:layout_width="52dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:scaleType="centerCrop"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/mesa_headerbotton"
+        app:layout_constraintBottom_toBottomOf="@+id/headerbotton"
         app:lottie_autoPlay="true"
         app:lottie_fileName="gear2.json"
         app:lottie_imageAssetsFolder="assets"

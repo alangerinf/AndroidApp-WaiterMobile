@@ -10,20 +10,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.alanger.waitermobile.R;
 import com.alanger.waitermobile.model.Mesa;
+import com.alanger.waitermobile.model.Pedido;
 
 import java.util.List;
 
 
-public class RViewAdapterMesa
-        extends RecyclerView.Adapter<RViewAdapterMesa.ViewHolder>
+public class RViewAdapterPedido
+        extends RecyclerView.Adapter<RViewAdapterPedido.ViewHolder>
         implements View.OnClickListener{
 
     private View.OnClickListener onClickListener;
 
-    List<Mesa> mesaList;
+    List<Pedido> pedidoList;
 
-    public RViewAdapterMesa(List<Mesa> mesaList) {
-        this.mesaList = mesaList;
+    public RViewAdapterPedido(List<Pedido> pedidoList) {
+        this.pedidoList = pedidoList;
     }
 
 
@@ -31,7 +32,7 @@ public class RViewAdapterMesa
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_mesas_item,null,false);
+                .inflate(R.layout.fragment_pedidos_listos_item,null,false);
         view.setOnClickListener(this);
         return new ViewHolder(view);
     }
@@ -40,19 +41,16 @@ public class RViewAdapterMesa
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        Mesa mesaTemp = mesaList.get(position);
+        Mesa mesaTemp = pedidoList.get(position);
         holder.tViewNOrden.setText(""+mesaTemp.getPos());
 
     }
 
-    public void setOnClicListener(View.OnClickListener listener){
-        this.onClickListener=listener;
 
-    }
 
     @Override
     public int getItemCount() {
-        return mesaList.size();
+        return pedidoList.size();
     }
 
 
@@ -70,17 +68,13 @@ public class RViewAdapterMesa
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        AppCompatTextView tView_NumPallet;
         AppCompatTextView tViewNumPallet;
-        AppCompatTextView tViewNumSensors;
         AppCompatTextView tViewNOrden;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tView_NumPallet = itemView.findViewById(R.id.imesa_tView_sLibre);
-            tViewNumPallet = itemView.findViewById(R.id.imesa_tViewNumPallet);
-            tViewNumSensors = itemView.findViewById(R.id.imesa_tViewNumSensors);
-            tViewNOrden = itemView.findViewById(R.id.imesa_tViewNOrden);
+            tViewNumPallet = itemView.findViewById(R.id.iplisto_tViewNumPallet);
+            tViewNOrden = itemView.findViewById(R.id.iplisto_tViewNOrden);
         }
     }
 }
