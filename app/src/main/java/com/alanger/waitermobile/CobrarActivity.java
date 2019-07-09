@@ -2,37 +2,31 @@ package com.alanger.waitermobile;
 
 
 import android.annotation.SuppressLint;
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.Pair;
-import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.alanger.waitermobile.model.Mesa;
 
 
-public class MesaActivity extends AppCompatActivity {
+public class CobrarActivity extends AppCompatActivity {
 
-    String TAG  = MesaActivity.class.getSimpleName();
+    String TAG  = CobrarActivity.class.getSimpleName();
     Mesa mesa;
     TextView tViewNOrden;
     TextView tViewCuenta;
-    TextView tView_Importe;
-    ConstraintLayout clContent;
-    AppCompatButton btnCobrar;
+    AppCompatButton btnQR;
     int REQUEST_QR_NPALLET=2134;
 
     final public static String PARAM_MESA = "mesa";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mesa);
+        setContentView(R.layout.activity_cobrar);
 
 
         Bundle b = getIntent().getExtras();
@@ -45,46 +39,28 @@ public class MesaActivity extends AppCompatActivity {
         defineAtribs();
 
 
-        events();
+        //events();
     }
-
+/*
     private void events() {
-        btnCobrar.setOnClickListener(v->{
-            Mesa item = mesa;
-            Intent i = new Intent(this, CobrarActivity.class);
-
-            ActivityOptions options = (ActivityOptions) ActivityOptions.makeSceneTransitionAnimation
-                    (this,
-                            Pair.create(btnCobrar, btnCobrar.getTransitionName()),
-                            Pair.create(tViewCuenta, tViewCuenta.getTransitionName()),
-                            Pair.create(tView_Importe, tView_Importe.getTransitionName()),
-                            Pair.create(clContent, clContent.getTransitionName())
-                    );
-            Bundle bundleExtra = new Bundle();
-            bundleExtra.putSerializable(MesaActivity.PARAM_MESA,  item);
-            i.putExtras(bundleExtra);
-            startActivity(i, options.toBundle());
-            v.setClickable(false);
+        btnQR.setOnClickListener(v->{
+            IntentIntegrator intentIntegrator =new IntentIntegrator(this);
+            intentIntegrator
+                    .setOrientationLocked(false)
+                    .setCaptureActivity(CustomScannerActivity.class)
+                    .setRequestCode(REQUEST_QR_NPALLET)
+                    .initiateScan();
         });
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        btnCobrar.setClickable(true);
-    }
-
+*/
     @SuppressLint("SetTextI18n")
     private void defineAtribs() {
         tViewNOrden.setText(""+ mesa.getPos());
     }
 
     private void define() {
-        btnCobrar = findViewById(R.id.mesa_btnCobrar);
-        tViewNOrden = findViewById(R.id.mesa_tViewNOrden);
-        tViewCuenta = findViewById(R.id.mesa_tViewCuenta);
-        tView_Importe = findViewById(R.id.mesa_tView_Importe);
-        clContent = findViewById(R.id.mesa_clContentTotal);
+        tViewNOrden = findViewById(R.id.cobrar_tViewNOrden);
+        tViewCuenta = findViewById(R.id.cobrar_tViewCuenta);
     }
 
     @Override

@@ -27,6 +27,14 @@
             android:theme="@style/AppTheme">
 
         </activity>
+
+        <activity
+            android:name=".CobrarActivity"
+            android:label="@string/title_cobrar_main"
+            android:parentActivityName=".MesaActivity"
+            android:theme="@style/AppTheme">
+
+        </activity>
     </application>
 
 </manifest>

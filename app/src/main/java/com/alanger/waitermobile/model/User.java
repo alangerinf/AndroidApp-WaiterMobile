@@ -13,7 +13,6 @@ public class User {
 
     public String toString(){
         Gson gson = new Gson();
-
         return gson.toJson(
                 this,
                 new TypeToken<User>() {}.getType());
