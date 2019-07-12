@@ -1,50 +1,73 @@
 package com.alanger.waitermobile.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Mesa implements Serializable {
 
-    private int id;
-    private int pos;
-    private String name;
-    private boolean isOccupied;
+    private int idMesa;
+    private int posicion;
+    private String nombre;
+    private int estado;
 
-    public Mesa(int id, int pos) {
-        this.name="";
-        this.isOccupied=false;
-        this.id=id;
-        this.pos=pos;
+    private List<Pedido> pedidoList;
+
+    private List<PedidosResumen> pedidosResumenList;
+
+    public Mesa(int idMesa, int posicion) {
+        this.nombre ="";
+        this.setEstado(0);
+        this.idMesa = idMesa;
+        this.posicion = posicion;
+        setPedidoList(new ArrayList<>());
     }
 
-    public int getId() {
-        return id;
+    public int getIdMesa() {
+        return idMesa;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdMesa(int idMesa) {
+        this.idMesa = idMesa;
     }
 
-    public int getPos() {
-        return pos;
+    public int getPosicion() {
+        return posicion;
     }
 
-    public void setPos(int pos) {
-        this.pos = pos;
+    public void setPosicion(int posicion) {
+        this.posicion = posicion;
     }
 
-    public String getName() {
-        return name;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public boolean isOccupied() {
-        return isOccupied;
+    public int getEstado() {
+        return estado;
     }
 
-    public void setOccupied(boolean occupied) {
-        isOccupied = occupied;
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+
+    public List<Pedido> getPedidoList() {
+        return pedidoList;
+    }
+
+    public void setPedidoList(List<Pedido> pedidoList) {
+        this.pedidoList = pedidoList;
+    }
+
+    public List<PedidosResumen> getPedidosResumenList() {
+        return pedidosResumenList;
+    }
+
+    public void setPedidosResumenList(List<PedidosResumen> pedidosResumenList) {
+        this.pedidosResumenList = pedidosResumenList;
     }
 }

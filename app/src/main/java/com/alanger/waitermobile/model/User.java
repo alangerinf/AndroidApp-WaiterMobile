@@ -10,13 +10,13 @@ public class User {
     private String password;
     private String token;
 
-
     public String toString(){
         Gson gson = new Gson();
         return gson.toJson(
                 this,
                 new TypeToken<User>() {}.getType());
     }
+
     public User() {
 
         user="";

@@ -38,7 +38,7 @@ public class LoginRepositoryImpl implements LoginRepository {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
+        Log.d(TAG,jsonObject.toString());
 
         JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
                 ConectionConfig.POST_LOGIN, jsonObject,
@@ -52,13 +52,13 @@ public class LoginRepositoryImpl implements LoginRepository {
                             if(codigoRespuesta==HTTP_OK) {
                                 JSONObject datos = new JSONObject(String.valueOf(response.getJSONObject("datos")));
                                 String token = datos.getString("token");
-                                JSONObject usuario = datos.getJSONObject("usuario");
+                                JSONObject usuario = datos.getJSONObject("mozo");
 
                                 User userTemp = new User();
-                                userTemp.setId(Integer.parseInt(usuario.getString("ID")));
+                                userTemp.setId(Integer.parseInt(usuario.getString("id_mozo")));
                                 userTemp.setUser(user);
                                 userTemp.setPassword(password);
-                                userTemp.setName(usuario.getString("NOMBRE"));
+                                userTemp.setName(usuario.getString("nombres"));
                                 userTemp.setToken(token);
 
                                 interactor.signSuccess(userTemp);

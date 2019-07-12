@@ -54,7 +54,7 @@ public class SharedPreferencesManager {
                         &&
                         preferences.contains(user_name)
                 ){
-                    //user.setId(preferences.getInt(user_id,0));
+                    //user.setIdMesa(preferences.getInt(user_id,0));
                     user = new User();
                     user.setId(12);
                     user.setUser(preferences.getString(user_user,""));

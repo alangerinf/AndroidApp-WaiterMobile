@@ -59,7 +59,7 @@
 
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/imesa_tViewNumPallet"
+                    android:id="@+id/imesa_tView_Pendientes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Pendientes"
@@ -71,7 +71,7 @@
                 </androidx.appcompat.widget.AppCompatTextView>
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/imesa_tViewNumSensors"
+                    android:id="@+id/imesa_tViewListPendientes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="2 Ensaladas\n2 Ensaladas\n2 Ensaladas\n2 Ensaladas"

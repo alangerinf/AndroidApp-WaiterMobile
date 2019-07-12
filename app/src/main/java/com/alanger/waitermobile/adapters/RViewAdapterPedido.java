@@ -42,7 +42,7 @@ public class RViewAdapterPedido
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         Mesa mesaTemp = pedidoList.get(position);
-        holder.tViewNOrden.setText(""+mesaTemp.getPos());
+        holder.tViewNOrden.setText(""+mesaTemp.getPosicion());
 
     }
 

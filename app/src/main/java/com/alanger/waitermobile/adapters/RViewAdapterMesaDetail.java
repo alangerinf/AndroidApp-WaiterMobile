@@ -16,15 +16,15 @@ import com.alanger.waitermobile.model.PedidosResumen;
 import java.util.List;
 
 
-public class RViewAdapterMesa
-        extends RecyclerView.Adapter<RViewAdapterMesa.ViewHolder>
+public class RViewAdapterMesaDetail
+        extends RecyclerView.Adapter<RViewAdapterMesaDetail.ViewHolder>
         implements View.OnClickListener{
 
     private View.OnClickListener onClickListener;
 
     List<Mesa> mesaList;
 
-    public RViewAdapterMesa(List<Mesa> mesaList) {
+    public RViewAdapterMesaDetail(List<Mesa> mesaList) {
         this.mesaList = mesaList;
     }
 

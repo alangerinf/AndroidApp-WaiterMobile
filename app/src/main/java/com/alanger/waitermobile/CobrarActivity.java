@@ -15,14 +15,15 @@ import com.alanger.waitermobile.model.Mesa;
 
 public class CobrarActivity extends AppCompatActivity {
 
-    String TAG  = CobrarActivity.class.getSimpleName();
+    String TAG = CobrarActivity.class.getSimpleName();
     Mesa mesa;
     TextView tViewNOrden;
     TextView tViewCuenta;
     AppCompatButton btnQR;
-    int REQUEST_QR_NPALLET=2134;
+    int REQUEST_QR_NPALLET = 2134;
 
     final public static String PARAM_MESA = "mesa";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,26 +42,33 @@ public class CobrarActivity extends AppCompatActivity {
 
         //events();
     }
-/*
-    private void events() {
-        btnQR.setOnClickListener(v->{
-            IntentIntegrator intentIntegrator =new IntentIntegrator(this);
-            intentIntegrator
-                    .setOrientationLocked(false)
-                    .setCaptureActivity(CustomScannerActivity.class)
-                    .setRequestCode(REQUEST_QR_NPALLET)
-                    .initiateScan();
-        });
-    }
-*/
+
+    /*
+        private void events() {
+            btnQR.setOnClickListener(v->{
+                IntentIntegrator intentIntegrator =new IntentIntegrator(this);
+                intentIntegrator
+                        .setOrientationLocked(false)
+                        .setCaptureActivity(CustomScannerActivity.class)
+                        .setRequestCode(REQUEST_QR_NPALLET)
+                        .initiateScan();
+            });
+        }
+    */
     @SuppressLint("SetTextI18n")
     private void defineAtribs() {
-        tViewNOrden.setText(""+ mesa.getPos());
+        tViewNOrden.setText("" + mesa.getPosicion());
     }
 
     private void define() {
         tViewNOrden = findViewById(R.id.cobrar_tViewNOrden);
         tViewCuenta = findViewById(R.id.cobrar_tViewCuenta);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     @Override
@@ -74,22 +82,6 @@ public class CobrarActivity extends AppCompatActivity {
         super.onBackPressed();
         */
         super.onBackPressed();
-        //finish();
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_QR_NPALLET) {
-
-            try {
-                Bundle recibidos = (data.getExtras());
-                if (recibidos != null) {
-                    String qr = recibidos.getString("qr");
-                }
-            } catch (Exception e) {
-                Log.d(TAG, e.toString());
-            }
-        }
-    }
 }

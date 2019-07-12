@@ -28,13 +28,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:theme="@style/TextLabel"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="MissingConstraints">
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="68dp">
 
             <com.alanger.waitermobile.adapters.GradientEditText
                 android:id="@+id/cobrar_eTextNombre"
@@ -84,13 +83,15 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/eTextNumPallets25"
-            android:layout_width="120dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
             android:theme="@style/TextLabel"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/eTextNumPallets24"
+            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints">
 
             <com.alanger.waitermobile.adapters.GradientEditText
@@ -185,11 +186,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
             android:text="Pedidos Pendientes"
             android:textColor="#000"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/eTextNumPallets25" />
+            app:layout_constraintTop_toBottomOf="@+id/eTextNumPallets24" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,13 @@
 package com.alanger.waitermobile.model;
 
-public class Pedido extends Mesa{
+import java.io.Serializable;
+
+public class Pedido extends Mesa implements Serializable {
 
     private int idPedido;
     private String name;
     private int status;
+
 
     public Pedido(int id, int pos) {
         super(id, pos);
@@ -24,13 +27,13 @@ public class Pedido extends Mesa{
     }
 
     @Override
-    public String getName() {
+    public String getNombre() {
         return name;
     }
 
     @Override
-    public void setName(String name) {
-        this.name = name;
+    public void setNombre(String nombre) {
+        this.name = nombre;
     }
 
     public int getStatus() {
