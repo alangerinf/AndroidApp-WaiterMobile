@@ -170,7 +170,8 @@ public class ListMesasFragment extends Fragment {
                                         PedidosResumen pedidosResumen = new PedidosResumen(
                                                 pedidosPendienteDataTemp.getInt("unidades"),
                                                 pedidosPendienteDataTemp.getString("nombre"),
-                                                pedidosPendienteDataTemp.getInt("importeTotal")
+                                                pedidosPendienteDataTemp.getInt("importeTotal"),
+                                                false
                                         );
                                         pedidosResumenList.add(pedidosResumen);
                                     }

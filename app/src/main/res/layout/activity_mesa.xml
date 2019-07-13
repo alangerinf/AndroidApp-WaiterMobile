@@ -39,8 +39,10 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/mesa_rViewPendientes"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="1"
             android:layout_width="0dp"
-            android:layout_height="377dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
@@ -115,8 +117,10 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/mesa_rViewEntregados"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="1"
             android:layout_width="0dp"
-            android:layout_height="397dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"

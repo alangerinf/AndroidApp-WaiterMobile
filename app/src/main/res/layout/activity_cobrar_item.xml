@@ -14,7 +14,6 @@
 
         tools:ignore="MissingConstraints">
 
-
         <TextView
             android:id="@+id/tViewCantidad"
             android:layout_width="30dp"

@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -28,9 +29,12 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.alanger.waiter.adapters.RViewAdapterMesaDetail;
 import com.alanger.waiter.app.AppController;
 import com.alanger.waiter.model.Mesa;
+import com.alanger.waiter.model.PedidosResumen;
 import com.alanger.waiter.model.Plato;
 import com.alanger.waiter.model.SharedPreferencesManager;
 import com.alanger.waiter.model.User;
@@ -62,6 +66,7 @@ public class MesaActivity extends AppCompatActivity {
     static TextView tView_Importe;
     static ConstraintLayout clContent;
     static AppCompatButton btnCobrar;
+    static TextView mesa_tViewCuenta;
     static FloatingActionButton fAButtonAddPlato;
     static int REQUEST_QR_NPALLET=2134;
 
@@ -69,8 +74,21 @@ public class MesaActivity extends AppCompatActivity {
 
     final public static String PARAM_MESA = "mesa";
 
-
     static Bundle b;
+
+
+    RViewAdapterMesaDetail adapterEntregados;
+    RViewAdapterMesaDetail adapterPendientes;
+
+    List<PedidosResumen> pedidosResumenList;
+
+    List<PedidosResumen> pedidosResumenListEntregados;
+    List<PedidosResumen> pedidosResumenListPendientes;
+
+
+    RecyclerView rViewEntregados;
+    RecyclerView rViewPendientes;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +106,52 @@ public class MesaActivity extends AppCompatActivity {
         defineAtribs();
 
         events();
+        cargarPedidos();
+
     }
+
+    private void cargarPedidos(){
+        pedidosResumenList = new ArrayList<>();
+
+        pedidosResumenList.add(new PedidosResumen(2,"Arroz con Pollo",12.3f,true));
+        pedidosResumenList.add(new PedidosResumen(3,"Cabrito",30.3f,false));
+        pedidosResumenList.add(new PedidosResumen(2,"Pepian",22.3f,false));
+        pedidosResumenList.add(new PedidosResumen(1,"Lomo Saltado",15.3f,true));
+        pedidosResumenList.add(new PedidosResumen(4,"Pollada",11.3f,true));
+        filtrarPedidos();
+
+    }
+
+    private void filtrarPedidos(){
+        pedidosResumenListEntregados = new ArrayList<>();
+        pedidosResumenListPendientes = new ArrayList<>();
+
+        float count =0;
+
+        for(PedidosResumen p :pedidosResumenList ){
+            count=count+p.getImporteTotal();
+            if(p.isEntragado()){
+                pedidosResumenListEntregados.add(p);
+            }else {
+                pedidosResumenListPendientes.add(p);
+            }
+        }
+
+        if(count==0){
+            mesa_tViewCuenta.setText("S/. 0.00");
+        }else {
+
+            mesa_tViewCuenta.setText("S/. "+count);
+        }
+        mesa_tViewCuenta.setText(""+count);
+        adapterEntregados = new RViewAdapterMesaDetail(ctx,pedidosResumenListEntregados);
+        adapterPendientes = new RViewAdapterMesaDetail(ctx,pedidosResumenListPendientes);
+
+        rViewEntregados.setAdapter(adapterEntregados);
+        rViewPendientes.setAdapter(adapterPendientes);
+
+    }
+
 
     private void events() {
 
@@ -129,6 +192,7 @@ public class MesaActivity extends AppCompatActivity {
 
     private void define() {
         ctx = this;
+        mesa_tViewCuenta = findViewById(R.id.mesa_tViewCuenta);
         fAButtonAddPlato  = findViewById(R.id.mesa_fAButtonAddPlato);
         btnCobrar = findViewById(R.id.mesa_btnCobrar);
         tViewNOrden = findViewById(R.id.mesa_tViewNOrden);
@@ -136,7 +200,8 @@ public class MesaActivity extends AppCompatActivity {
         tView_Importe = findViewById(R.id.mesa_tView_Importe);
         clContent = findViewById(R.id.mesa_clContentTotal);
         platoList = new ArrayList<>();
-
+        rViewPendientes = findViewById(R.id.mesa_rViewPendientes);
+        rViewEntregados = findViewById(R.id.mesa_rViewEntregados);
 
     }
 
@@ -164,15 +229,10 @@ public class MesaActivity extends AppCompatActivity {
         TextView tViewRecomendacion = dialogClose.findViewById(R.id.tViewRecomendacion);
         TextView tViewNamePlato = dialogClose.findViewById(R.id.tViewNamePlato);
 
-
         tViewNamePlato.setText(plato.getName());
         tViewRecomendacion.setText("Solo se pueden agregar "+plato.getCantidad()+" platos");
 
-
         EditText eTextCantidad= dialogClose.findViewById(R.id.eTextCantidad);
-
-
-
 
         eTextCantidad.addTextChangedListener(new TextWatcher() {
 
@@ -219,10 +279,6 @@ public class MesaActivity extends AppCompatActivity {
             }
             public void beforeTextChanged(CharSequence s, int start, int count,
                                           int after) {
-
-
-
-
 
             }
 

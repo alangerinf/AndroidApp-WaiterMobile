@@ -25,7 +25,6 @@
             android:label="@string/title_mesa_main"
             android:parentActivityName="com.alanger.waiter.MainActivity"
             android:theme="@style/AppTheme">
-
         </activity>
 
         <activity

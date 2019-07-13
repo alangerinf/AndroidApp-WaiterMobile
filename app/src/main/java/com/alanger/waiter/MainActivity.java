@@ -1,8 +1,13 @@
 package com.alanger.waiter;
 
+import android.app.Dialog;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 
+import com.alanger.waiter.model.SharedPreferencesManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import android.view.View;
@@ -18,6 +23,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.view.Menu;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
@@ -97,7 +105,7 @@ ListMesasFragment.OnFragmentInteractionListener{
         }
         if (id == R.id.logout) {
 
-            //showPopupRecomendacion("¿Desea Cerrar Sesión?");
+            showPopupRecomendacion("¿Desea Cerrar Sesión?");
 
 
 
@@ -105,6 +113,37 @@ ListMesasFragment.OnFragmentInteractionListener{
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void showPopupRecomendacion(String mensaje){
+        Dialog dialogClose;
+        dialogClose = new Dialog(this);
+        dialogClose.setContentView(R.layout.dialog_recomendaciones);
+        Button btnDialogClose = (Button) dialogClose.findViewById(R.id.btnOk);
+        ImageView iViewDialogClose = (ImageView) dialogClose.findViewById(R.id.iViewDialogClose);
+        TextView tViewRecomendacion = dialogClose.findViewById(R.id.tViewRecomendacion);
+        tViewRecomendacion.setText(mensaje);
+        iViewDialogClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogClose.dismiss();
+            }
+        });
+        btnDialogClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(getBaseContext(), "Cerrando Sesión...", Toast.LENGTH_LONG).show();
+                //new LoginDataDAO(getBaseContext()).borrarTable();
+                SharedPreferencesManager.deleteUser(getBaseContext());
+                Intent intent = new Intent(getBaseContext(), ActivityPreloader.class);
+                startActivity(intent);
+                dialogClose.dismiss();
+            }
+        });
+
+        dialogClose.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialogClose.show();
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
