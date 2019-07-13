@@ -81,10 +81,14 @@ public class PedidosListosFragment extends Fragment {
 
     private void addMesas() {
 
-        for(int i=0;i<10;i++){
-            Pedido mesaTemp = new Pedido(i+1,i+1);
-            pedidoList.add(mesaTemp);
-        }
+
+        pedidoList.add( new Pedido(1,"Arroz con Pollo",1));
+        pedidoList.add( new Pedido(2,"Arroz con Pato",1));
+        pedidoList.add( new Pedido(3,"Cabrito",3));
+        pedidoList.add( new Pedido(4,"Milanesa",4));
+        pedidoList.add( new Pedido(5,"Arroz con Pollo",5));
+        pedidoList.add( new Pedido(6,"Milanesa",5));
+        pedidoList.add( new Pedido(7,"Pollo Saltado",5));
 
         adapter = new RViewAdapterPedido(pedidoList);
 

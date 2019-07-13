@@ -46,6 +46,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
+import com.google.zxing.integration.android.IntentIntegrator;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -143,7 +144,7 @@ public class MesaActivity extends AppCompatActivity {
 
             mesa_tViewCuenta.setText("S/. "+count);
         }
-        mesa_tViewCuenta.setText(""+count);
+        //mesa_tViewCuenta.setText(""+count);
         adapterEntregados = new RViewAdapterMesaDetail(ctx,pedidosResumenListEntregados);
         adapterPendientes = new RViewAdapterMesaDetail(ctx,pedidosResumenListPendientes);
 
@@ -160,6 +161,7 @@ public class MesaActivity extends AppCompatActivity {
             consultarMenu(user.getToken());
 
         });
+
         btnCobrar.setOnClickListener(v->{
             Mesa item = mesa;
             Intent i = new Intent(this, CobrarActivity.class);
@@ -202,7 +204,6 @@ public class MesaActivity extends AppCompatActivity {
         platoList = new ArrayList<>();
         rViewPendientes = findViewById(R.id.mesa_rViewPendientes);
         rViewEntregados = findViewById(R.id.mesa_rViewEntregados);
-
     }
 
     @Override
@@ -352,7 +353,7 @@ public class MesaActivity extends AppCompatActivity {
 
     private void consultarMenu(String token){
         ProgressDialog progressDialog = new ProgressDialog(ctx);
-        progressDialog.setTitle("Buscando Mesas");
+        progressDialog.setTitle("Buscando Platos Restantes");
         progressDialog.setCancelable(false);
         progressDialog.show();
         Log.d(TAG,"entro en consulta");
@@ -446,19 +447,5 @@ public class MesaActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_QR_NPALLET) {
 
-            try {
-                Bundle recibidos = (data.getExtras());
-                if (recibidos != null) {
-                    String qr = recibidos.getString("qr");
-                }
-            } catch (Exception e) {
-                Log.d(TAG, e.toString());
-            }
-        }
-    }
 }

@@ -3,13 +3,13 @@
     <string name="title_activity_main2">Main2Activity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_title">Bienvenido C. Castillo Diestra</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
     <string name="menu_mesas">Mis Mesas</string>
-    <string name="menu_pedidos">Mis Pedidos</string>
+    <string name="menu_pedidos">Mis Pedidos Listos</string>
     <string name="menu_ingresos">Total de Ingresos</string>
     <string name="title_activity_main">WaiterMobile</string>
 
@@ -17,4 +17,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_mesa_main">Mesa</string>
     <string name="title_cobrar_main">Cobrar</string>
+    <string name="listaapreparar">Modo Cocina</string>
 </resources>

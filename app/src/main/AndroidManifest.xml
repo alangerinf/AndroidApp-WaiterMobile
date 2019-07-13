@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.alanger.waiter">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -15,11 +18,13 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+
         <activity
             android:name="com.alanger.waiter.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+
         <activity
             android:name="com.alanger.waiter.MesaActivity"
             android:label="@string/title_mesa_main"
@@ -32,7 +37,6 @@
             android:label="@string/title_cobrar_main"
             android:parentActivityName="com.alanger.waiter.MesaActivity"
             android:theme="@style/AppTheme">
-
         </activity>
 
         <activity
@@ -45,11 +49,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name="com.alanger.waiter.login.view.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Fullscreen" />
 
+        <activity
+            android:name=".CustomScannerActivity"
+            android:screenOrientation="fullSensor"
+            android:stateNotNeeded="true"
+            android:parentActivityName=".MesaActivity"
+            android:windowSoftInputMode="stateAlwaysHidden">
+        </activity>
     </application>
 
 

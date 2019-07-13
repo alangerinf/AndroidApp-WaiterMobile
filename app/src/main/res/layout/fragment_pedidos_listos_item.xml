@@ -36,15 +36,15 @@
         </androidx.appcompat.widget.AppCompatTextView>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/iplisto_tViewNumPallet"
+            android:id="@+id/iplisto_tViewName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:textStyle="bold"
             android:text="Arroz con Pollo"
             android:textColor="@color/colorPrimary"
             android:textSize="18sp"
+            android:textStyle="bold"
             android:transitionName="NumPallet"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button"
@@ -53,7 +53,7 @@
 
         </androidx.appcompat.widget.AppCompatTextView>
 
-        <com.alanger.waiter.adapters.GradientButton
+        <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -61,6 +61,8 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
             android:text="Entregar"
+            android:textColor="#fff"
+            android:background="@color/colorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

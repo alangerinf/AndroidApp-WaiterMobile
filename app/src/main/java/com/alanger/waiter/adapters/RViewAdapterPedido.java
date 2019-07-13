@@ -3,6 +3,7 @@ package com.alanger.waiter.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -43,6 +44,12 @@ public class RViewAdapterPedido
 
         Mesa mesaTemp = pedidoList.get(position);
         holder.tViewNOrden.setText(""+mesaTemp.getPosicion());
+        holder.tViewNumPallet.setText(""+mesaTemp.getNombre());
+
+        holder.button.setOnClickListener(v->{
+            pedidoList.remove(mesaTemp);
+            this.notifyDataSetChanged();
+        });
 
     }
 
@@ -70,10 +77,12 @@ public class RViewAdapterPedido
 
         AppCompatTextView tViewNumPallet;
         AppCompatTextView tViewNOrden;
+        Button button;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tViewNumPallet = itemView.findViewById(R.id.iplisto_tViewNumPallet);
+            tViewNumPallet = itemView.findViewById(R.id.iplisto_tViewName);
+            button =  itemView.findViewById(R.id.button);
             tViewNOrden = itemView.findViewById(R.id.iplisto_tViewNOrden);
         }
     }

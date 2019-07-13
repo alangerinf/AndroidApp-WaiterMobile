@@ -13,6 +13,11 @@ public class Pedido extends Mesa implements Serializable {
         super(id, pos);
         this.name="";
     }
+
+    public Pedido(int id, String name,int pos) {
+        super(id, pos);
+        this.name=name;
+    }
     public Pedido(){
         super(0,0);
         this.name="";
