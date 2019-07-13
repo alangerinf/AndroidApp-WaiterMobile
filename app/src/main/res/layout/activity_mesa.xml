@@ -50,7 +50,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mesa_textView5" />
 
-        <com.alanger.waitermobile.adapters.GradientTextView
+        <com.alanger.waiter.adapters.GradientTextView
             android:id="@+id/mesa_tView_Importe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -89,7 +89,7 @@
                 android:textSize="32sp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.alanger.waitermobile.adapters.GradientTextView
+        <com.alanger.waiter.adapters.GradientTextView
             android:id="@+id/mesa_textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -101,7 +101,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mesa_clContentTotal" />
 
-        <com.alanger.waitermobile.adapters.GradientTextView
+        <com.alanger.waiter.adapters.GradientTextView
             android:id="@+id/mesa_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

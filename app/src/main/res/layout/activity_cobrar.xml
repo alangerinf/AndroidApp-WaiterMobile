@@ -36,7 +36,7 @@
             app:layout_constraintTop_toBottomOf="@+id/eTextNumPallets25"
             tools:ignore="MissingConstraints">
 
-            <com.alanger.waitermobile.adapters.GradientEditText
+            <com.alanger.waiter.adapters.GradientEditText
                 android:id="@+id/cobrar_eTextNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
             app:layout_constraintTop_toBottomOf="@+id/eTextNumPallets23"
             tools:ignore="MissingConstraints">
 
-            <com.alanger.waitermobile.adapters.GradientEditText
+            <com.alanger.waiter.adapters.GradientEditText
                 android:id="@+id/cobrar_eTextDireccion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints">
 
-            <com.alanger.waitermobile.adapters.GradientEditText
+            <com.alanger.waiter.adapters.GradientEditText
                 android:id="@+id/cobrar_eTextDocumento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -142,7 +142,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cobrar_textView5" />
 
-        <com.alanger.waitermobile.adapters.GradientTextView
+        <com.alanger.waiter.adapters.GradientTextView
             android:id="@+id/cobrar_tView_Importe"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -182,7 +182,7 @@
                 android:textSize="32sp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.alanger.waitermobile.adapters.GradientTextView
+        <com.alanger.waiter.adapters.GradientTextView
             android:id="@+id/cobrar_textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
