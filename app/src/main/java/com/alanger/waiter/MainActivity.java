@@ -31,6 +31,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener ,
 PedidosListosFragment.OnFragmentInteractionListener,
+ModoCocinaFragment.OnFragmentInteractionListener,
 ListMesasFragment.OnFragmentInteractionListener{
 
 
@@ -163,8 +164,10 @@ ListMesasFragment.OnFragmentInteractionListener{
             myFragment = new PedidosListosFragment();
 
             getSupportFragmentManager().beginTransaction().replace(R.id.content_main, myFragment).commit();
-        } else if (id == R.id.nav_money) {
+        } else if (id == R.id.nav_cocinamode) {
+            myFragment = new ModoCocinaFragment();
 
+            getSupportFragmentManager().beginTransaction().replace(R.id.content_main, myFragment).commit();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
