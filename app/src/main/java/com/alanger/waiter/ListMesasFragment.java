@@ -194,15 +194,16 @@ public class ListMesasFragment extends Fragment {
                                     Mesa item = mesaList.get(pos);
                                     Intent i = new Intent(getContext(), MesaActivity.class);
                                     View viewTemp = v;
-
+/*
                                     ActivityOptions options = (ActivityOptions) ActivityOptions.makeSceneTransitionAnimation
                                             (activity,
                                                     Pair.create(viewTemp, viewTemp.getTransitionName())
                                             );
+  */
                                     Bundle bundleExtra = new Bundle();
                                     bundleExtra.putSerializable(MesaActivity.PARAM_MESA,  item);
                                     i.putExtras(bundleExtra);
-                                    startActivityForResult(i,REQUESTCODE_EDITPALLET, options.toBundle());
+                                    startActivityForResult(i,REQUESTCODE_EDITPALLET);//, options.toBundle());
                                     //handler.postDelayed(()->{
                                     //    adapter.setModeVerify(false);
                                     //    adapter.notifyDataSetChanged();
